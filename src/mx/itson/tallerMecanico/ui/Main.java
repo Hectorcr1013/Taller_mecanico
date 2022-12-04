@@ -87,6 +87,9 @@ public class Main extends javax.swing.JFrame {
         pnlIngreso.setBackground(new java.awt.Color(21, 101, 192));
         pnlIngreso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlIngreso.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlIngresoMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 pnlIngresoMouseEntered(evt);
             }
@@ -109,6 +112,9 @@ public class Main extends javax.swing.JFrame {
         pnlReparacion.setBackground(new java.awt.Color(18, 90, 173));
         pnlReparacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlReparacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlReparacionMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 pnlReparacionMouseEntered(evt);
             }
@@ -123,7 +129,7 @@ public class Main extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("En reparacion");
+        jLabel8.setText("En reparación");
         pnlReparacion.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 150, 40));
 
         jPanel1.add(pnlReparacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 270, 60));
@@ -317,6 +323,38 @@ public class Main extends javax.swing.JFrame {
         if(pnlIngreso.getBackground().getRGB() != -15574355 || pnlReparacion.getBackground().getRGB() != -15574355)
             Logica.resetColor(pnlArreglados);
     }//GEN-LAST:event_pnlArregladosMouseExited
+
+    private void pnlIngresoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlIngresoMouseClicked
+        
+        Logica.setColor(pnlIngreso);
+        Logica.resetColor(pnlReparacion);
+        Logica.resetColor(pnlArreglados);
+        
+        Ingreso p1 = new Ingreso();
+        p1.setSize(1010, 450);
+        p1.setLocation(0,0);
+        
+        pnlJFrames.removeAll();
+        pnlJFrames.add(p1, BorderLayout.CENTER);
+        pnlJFrames.revalidate();
+        pnlJFrames.repaint();
+    }//GEN-LAST:event_pnlIngresoMouseClicked
+
+    private void pnlReparacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlReparacionMouseClicked
+        
+        Logica.setColor(pnlReparacion);
+        Logica.resetColor(pnlIngreso);
+        Logica.resetColor(pnlArreglados);
+        
+        Reparacion p2 = new Reparacion();
+        p2.setSize(1010, 450);
+        p2.setLocation(0,0);
+        
+        pnlJFrames.removeAll();
+        pnlJFrames.add(p2, BorderLayout.CENTER);
+        pnlJFrames.revalidate();
+        pnlJFrames.repaint();
+    }//GEN-LAST:event_pnlReparacionMouseClicked
 
     
     

@@ -49,68 +49,71 @@ public class Ingreso extends javax.swing.JPanel {
         pnlIngreso = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jSeparator6 = new javax.swing.JSeparator();
+        txfDetalle = new javax.swing.JTextField();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/tallerMecanico/imagenes/logo_cars_2_250x210_1_100x80.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 10, 100, 80));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 10, 100, 80));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Caracteristicas del auto");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 780, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Marca");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 100, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, 100, -1));
 
         txfModelo.setBackground(new java.awt.Color(255, 255, 255));
         txfModelo.setBorder(null);
-        jPanel1.add(txfModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, 180, 20));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, 180, 10));
+        jPanel1.add(txfModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 180, 20));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, 180, 10));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Modelo");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 100, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 100, -1));
 
         txfAnio.setBackground(new java.awt.Color(255, 255, 255));
         txfAnio.setBorder(null);
-        jPanel1.add(txfAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, 180, 20));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, 180, 10));
+        jPanel1.add(txfAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, 180, 20));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 180, 10));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Año");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 100, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 100, -1));
 
         txfMarca.setBackground(new java.awt.Color(255, 255, 255));
         txfMarca.setBorder(null);
-        jPanel1.add(txfMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 170, 180, 20));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 180, 10));
+        jPanel1.add(txfMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 180, 20));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, 180, 10));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("Combustible");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 220, 110, 20));
+        jLabel6.setText("Detalle del auto");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 180, 110, 20));
 
         txfColor.setBackground(new java.awt.Color(255, 255, 255));
         txfColor.setBorder(null);
-        jPanel1.add(txfColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 170, 180, 20));
-        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 190, 180, 10));
-        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, 390, 10));
+        jPanel1.add(txfColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 370, 180, 20));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 390, 180, 10));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 390, 10));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Color");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 140, 110, 20));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 340, 110, 20));
 
         cbxCombustible.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gasolina", "Diésel" }));
-        jPanel1.add(cbxCombustible, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 250, 180, -1));
+        jPanel1.add(cbxCombustible, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 130, 180, -1));
 
         pnlIngreso.setBackground(new java.awt.Color(18, 90, 173));
         pnlIngreso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -140,10 +143,20 @@ public class Ingreso extends javax.swing.JPanel {
             .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jPanel1.add(pnlIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 340, 180, 50));
+        jPanel1.add(pnlIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 290, 180, 50));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/tallerMecanico/imagenes/taller_mecanico_280x450.jpg"))); // NOI18N
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 450));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setText("Combustible");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 100, 110, 20));
+        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 230, 240, 10));
+
+        txfDetalle.setBackground(new java.awt.Color(255, 255, 255));
+        txfDetalle.setBorder(null);
+        jPanel1.add(txfDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 210, 240, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -169,6 +182,7 @@ public class Ingreso extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbxCombustible;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -183,9 +197,11 @@ public class Ingreso extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
     private javax.swing.JPanel pnlIngreso;
     private javax.swing.JTextField txfAnio;
     private javax.swing.JTextField txfColor;
+    private javax.swing.JTextField txfDetalle;
     private javax.swing.JTextField txfMarca;
     private javax.swing.JTextField txfModelo;
     // End of variables declaration//GEN-END:variables
