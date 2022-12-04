@@ -58,7 +58,6 @@ public class Logica {
     
     /**
      * Inserta en la base de datos los valores que se agregan en los parametros
-     * @param id El id del auto que se agregará
      * @param marca El marca del auto que se agregará
      * @param modelo El modelo del auto que se agregará
      * @param anio El año del auto que se agregará
@@ -67,20 +66,19 @@ public class Logica {
      * @param detalle El defecto por el que entrará el auto al taller
      * @return Retorna si se ejecutó la actualizacion en la base de datos.
      */
-    public static boolean guardar(int id, String marca, String modelo, int anio, String color, String combustible, String detalle){
+    public static boolean guardar(String marca, String modelo, int anio, String color, String combustible, String detalle){
         boolean resultado = false;
         try {
             
-           String consulta = "INSERT INTO taller.reparacion (id, marca, modelo, anio, color, combustible, detalle) VALUES (?, ?, ?, ?, ?, ?, ?)";
+           String consulta = "INSERT INTO taller.reparacion (marca, modelo, anio, color, combustible, detalle) VALUES (?, ?, ?, ?, ?, ?)";
            Connection conexion = Conexion.obtener();
            PreparedStatement statement = conexion.prepareStatement(consulta, Statement.RETURN_GENERATED_KEYS);
-           statement.setInt(1, id);
-           statement.setString(2, marca);
-           statement.setString(3, modelo);
-           statement.setInt(4, anio);
-           statement.setString(5, color);
-           statement.setString(6, combustible);
-           statement.setString(7, detalle);
+           statement.setString(1, marca);
+           statement.setString(2, modelo);
+           statement.setInt(3, anio);
+           statement.setString(4, color);
+           statement.setString(5, combustible);
+           statement.setString(6, detalle);
            statement.executeUpdate();
            
            resultado = statement.getUpdateCount() == 1;

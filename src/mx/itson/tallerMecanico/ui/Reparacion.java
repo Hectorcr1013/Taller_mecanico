@@ -73,13 +73,24 @@ public class Reparacion extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblReparacion);
         if (tblReparacion.getColumnModel().getColumnCount() > 0) {
+            tblReparacion.getColumnModel().getColumn(0).setMinWidth(50);
+            tblReparacion.getColumnModel().getColumn(0).setPreferredWidth(50);
             tblReparacion.getColumnModel().getColumn(0).setMaxWidth(50);
+            tblReparacion.getColumnModel().getColumn(1).setMinWidth(80);
+            tblReparacion.getColumnModel().getColumn(1).setPreferredWidth(80);
             tblReparacion.getColumnModel().getColumn(1).setMaxWidth(80);
+            tblReparacion.getColumnModel().getColumn(2).setMinWidth(80);
+            tblReparacion.getColumnModel().getColumn(2).setPreferredWidth(80);
             tblReparacion.getColumnModel().getColumn(2).setMaxWidth(80);
-            tblReparacion.getColumnModel().getColumn(3).setMaxWidth(80);
+            tblReparacion.getColumnModel().getColumn(3).setMinWidth(70);
+            tblReparacion.getColumnModel().getColumn(3).setPreferredWidth(70);
+            tblReparacion.getColumnModel().getColumn(3).setMaxWidth(70);
+            tblReparacion.getColumnModel().getColumn(4).setMinWidth(80);
+            tblReparacion.getColumnModel().getColumn(4).setPreferredWidth(80);
             tblReparacion.getColumnModel().getColumn(4).setMaxWidth(80);
-            tblReparacion.getColumnModel().getColumn(5).setMinWidth(80);
-            tblReparacion.getColumnModel().getColumn(5).setMaxWidth(80);
+            tblReparacion.getColumnModel().getColumn(5).setMinWidth(90);
+            tblReparacion.getColumnModel().getColumn(5).setPreferredWidth(90);
+            tblReparacion.getColumnModel().getColumn(5).setMaxWidth(90);
         }
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 720, 320));

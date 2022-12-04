@@ -6,6 +6,7 @@ package mx.itson.tallerMecanico.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import mx.itson.tallerMecanico.entidades.Logica;
 
 /**
@@ -74,7 +75,14 @@ public class Ingreso extends javax.swing.JPanel {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, 100, -1));
 
         txfModelo.setBackground(new java.awt.Color(255, 255, 255));
+        txfModelo.setForeground(new java.awt.Color(153, 153, 153));
+        txfModelo.setText("Ingresa el modelo del auto");
         txfModelo.setBorder(null);
+        txfModelo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txfModeloMousePressed(evt);
+            }
+        });
         jPanel1.add(txfModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 180, 20));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, 180, 10));
 
@@ -84,7 +92,14 @@ public class Ingreso extends javax.swing.JPanel {
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 100, -1));
 
         txfAnio.setBackground(new java.awt.Color(255, 255, 255));
+        txfAnio.setForeground(new java.awt.Color(153, 153, 153));
+        txfAnio.setText("Ingresa el año del auto");
         txfAnio.setBorder(null);
+        txfAnio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txfAnioMousePressed(evt);
+            }
+        });
         jPanel1.add(txfAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, 180, 20));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 180, 10));
 
@@ -94,7 +109,19 @@ public class Ingreso extends javax.swing.JPanel {
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 100, -1));
 
         txfMarca.setBackground(new java.awt.Color(255, 255, 255));
+        txfMarca.setForeground(new java.awt.Color(153, 153, 153));
+        txfMarca.setText("Ingresa la marca del auto");
         txfMarca.setBorder(null);
+        txfMarca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txfMarcaMousePressed(evt);
+            }
+        });
+        txfMarca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txfMarcaActionPerformed(evt);
+            }
+        });
         jPanel1.add(txfMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 180, 20));
         jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, 180, 10));
 
@@ -104,7 +131,14 @@ public class Ingreso extends javax.swing.JPanel {
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 180, 110, 20));
 
         txfColor.setBackground(new java.awt.Color(255, 255, 255));
+        txfColor.setForeground(new java.awt.Color(153, 153, 153));
+        txfColor.setText("Ingresa el color del auto");
         txfColor.setBorder(null);
+        txfColor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txfColorMousePressed(evt);
+            }
+        });
         jPanel1.add(txfColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 370, 180, 20));
         jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 390, 180, 10));
         jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 390, 10));
@@ -128,6 +162,9 @@ public class Ingreso extends javax.swing.JPanel {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 pnlIngresoMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                pnlIngresoMousePressed(evt);
             }
         });
 
@@ -160,7 +197,14 @@ public class Ingreso extends javax.swing.JPanel {
         jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 230, 240, 10));
 
         txfDetalle.setBackground(new java.awt.Color(255, 255, 255));
+        txfDetalle.setForeground(new java.awt.Color(153, 153, 153));
+        txfDetalle.setText("Ingresa el detalle que tiene el auto");
         txfDetalle.setBorder(null);
+        txfDetalle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txfDetalleMousePressed(evt);
+            }
+        });
         jPanel1.add(txfDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 210, 240, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -184,19 +228,169 @@ public class Ingreso extends javax.swing.JPanel {
     }//GEN-LAST:event_pnlIngresoMouseExited
 
     private void pnlIngresoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlIngresoMouseClicked
-        Logica.setColor(Main.pnlReparacion);
-        Logica.resetColor(Main.pnlIngreso);
-        Logica.resetColor(Main.pnlArreglados);
         
-        Reparacion p2 = new Reparacion();
-        p2.setSize(1010, 450);
-        p2.setLocation(0,0);
+        String mar = txfMarca.getText().toUpperCase();
+        String mod = txfModelo.getText().toUpperCase();
+        String anio = txfAnio.getText();
+        String col = txfColor.getText().toUpperCase();
+        String com = cbxCombustible.getSelectedItem().toString();
+        String det = txfDetalle.getText();
         
-        Main.pnlJFrames.removeAll();
-        Main.pnlJFrames.add(p2, BorderLayout.CENTER);
-        Main.pnlJFrames.revalidate();
-        Main.pnlJFrames.repaint();
+        try {
+            if(mar.equals("") || mar.equals("Ingresa la marca del auto") || 
+                    mod.equals("") || mod.equals("Ingresa el modelo del auto") || 
+                    anio.equals("") || anio.equals("Ingresa el año del auto") || 
+                    col.equals("") || col.equals("Ingresa el color del auto") || 
+                    det.equals("") || det.equals("Ingresa el detalle que tiene el auto")){
+                JOptionPane.showMessageDialog(null,"Faltan ingresar datos");
+            } else {
+                
+                Logica.guardar(mar, mod, Integer.parseInt(anio), col, com, det);
+                JOptionPane.showMessageDialog(null,"Modelo añadido");
+                
+                Logica.setColor(Main.pnlReparacion);
+                Logica.resetColor(Main.pnlIngreso);
+                Logica.resetColor(Main.pnlArreglados);
+        
+                Reparacion p2 = new Reparacion();
+                p2.setSize(1010, 450);
+                p2.setLocation(0,0);
+        
+                Main.pnlJFrames.removeAll();
+                Main.pnlJFrames.add(p2, BorderLayout.CENTER);
+                Main.pnlJFrames.revalidate();
+                Main.pnlJFrames.repaint();
+            
+            }
+        } catch (Exception e) {
+            System.out.println("No se pudo agregar la fila: " + e);
+        }
+        
+        
     }//GEN-LAST:event_pnlIngresoMouseClicked
+
+    private void txfMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfMarcaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txfMarcaActionPerformed
+
+    private void pnlIngresoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlIngresoMousePressed
+        
+    }//GEN-LAST:event_pnlIngresoMousePressed
+
+    private void txfMarcaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txfMarcaMousePressed
+        if(txfModelo.getText().isEmpty()){
+        txfModelo.setText("Ingresa el modelo del auto");
+        txfModelo.setForeground(Color.GRAY);
+        }
+        if(txfAnio.getText().isEmpty()){
+        txfAnio.setText("Ingresa el año del auto");
+        txfAnio.setForeground(Color.GRAY);
+        }
+        if(txfColor.getText().isEmpty()){
+        txfColor.setText("Ingresa el color del auto");
+        txfColor.setForeground(Color.GRAY);
+        }
+        if (txfDetalle.getText().isEmpty()) {
+        txfDetalle.setText("Ingresa el detalle que tiene el auto");
+        txfDetalle.setForeground(Color.GRAY);
+        }
+        if(txfMarca.getText().equals("Ingresa la marca del auto")){
+        txfMarca.setText("");
+        txfMarca.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_txfMarcaMousePressed
+
+    private void txfModeloMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txfModeloMousePressed
+        if(txfMarca.getText().isEmpty()){
+        txfMarca.setText("Ingresa la marca del auto");
+        txfMarca.setForeground(Color.GRAY);
+        }
+        if(txfAnio.getText().isEmpty()){
+        txfAnio.setText("Ingresa el año del auto");
+        txfAnio.setForeground(Color.GRAY);
+        }
+        if(txfColor.getText().isEmpty()){
+        txfColor.setText("Ingresa el color del auto");
+        txfColor.setForeground(Color.GRAY);
+        }
+        if (txfDetalle.getText().isEmpty()) {
+        txfDetalle.setText("Ingresa el detalle que tiene el auto");
+        txfDetalle.setForeground(Color.GRAY);
+        }
+        if(txfModelo.getText().equals("Ingresa el modelo del auto")){
+        txfModelo.setText("");
+        txfModelo.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_txfModeloMousePressed
+
+    private void txfAnioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txfAnioMousePressed
+        if(txfMarca.getText().isEmpty()){
+        txfMarca.setText("Ingresa la marca del auto");
+        txfMarca.setForeground(Color.GRAY);
+        }
+        if(txfModelo.getText().isEmpty()){
+        txfModelo.setText("Ingresa el modelo del auto");
+        txfModelo.setForeground(Color.GRAY);
+        }
+        if(txfColor.getText().isEmpty()){
+        txfColor.setText("Ingresa el color del auto");
+        txfColor.setForeground(Color.GRAY);
+        }
+        if (txfDetalle.getText().isEmpty()) {
+        txfDetalle.setText("Ingresa el detalle que tiene el auto");
+        txfDetalle.setForeground(Color.GRAY);
+        }
+        if(txfAnio.getText().equals("Ingresa el año del auto")){
+        txfAnio.setText("");
+        txfAnio.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_txfAnioMousePressed
+
+    private void txfColorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txfColorMousePressed
+        if(txfMarca.getText().isEmpty()){
+        txfMarca.setText("Ingresa la marca del auto");
+        txfMarca.setForeground(Color.GRAY);
+        }
+        if(txfAnio.getText().isEmpty()){
+        txfAnio.setText("Ingresa el año del auto");
+        txfAnio.setForeground(Color.GRAY);
+        }
+        if(txfModelo.getText().isEmpty()){
+        txfModelo.setText("Ingresa el modelo del auto");
+        txfModelo.setForeground(Color.GRAY);
+        }
+        if (txfDetalle.getText().isEmpty()) {
+        txfDetalle.setText("Ingresa el detalle que tiene el auto");
+        txfDetalle.setForeground(Color.GRAY);
+        }
+        if(txfColor.getText().equals("Ingresa el color del auto")){
+        txfColor.setText("");
+        txfColor.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_txfColorMousePressed
+
+    private void txfDetalleMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txfDetalleMousePressed
+        if(txfMarca.getText().isEmpty()){
+        txfMarca.setText("Ingresa la marca del auto");
+        txfMarca.setForeground(Color.GRAY);
+        }
+        if(txfAnio.getText().isEmpty()){
+        txfAnio.setText("Ingresa el año del auto");
+        txfAnio.setForeground(Color.GRAY);
+        }
+        if(txfColor.getText().isEmpty()){
+        txfColor.setText("Ingresa el color del auto");
+        txfColor.setForeground(Color.GRAY);
+        }
+        if (txfModelo.getText().isEmpty()) {
+        txfModelo.setText("Ingresa el modelo del auto");
+        txfModelo.setForeground(Color.GRAY);
+        }
+        if(txfDetalle.getText().equals("Ingresa el detalle que tiene el auto")){
+        txfDetalle.setText("");
+        txfDetalle.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_txfDetalleMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
