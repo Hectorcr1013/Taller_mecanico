@@ -4,7 +4,9 @@
  */
 package mx.itson.tallerMecanico.ui;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import mx.itson.tallerMecanico.entidades.Logica;
 
 /**
  *
@@ -118,6 +120,9 @@ public class Ingreso extends javax.swing.JPanel {
         pnlIngreso.setBackground(new java.awt.Color(18, 90, 173));
         pnlIngreso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlIngreso.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlIngresoMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 pnlIngresoMouseEntered(evt);
             }
@@ -177,6 +182,21 @@ public class Ingreso extends javax.swing.JPanel {
     private void pnlIngresoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlIngresoMouseExited
         pnlIngreso.setBackground(new Color(18,90,173));
     }//GEN-LAST:event_pnlIngresoMouseExited
+
+    private void pnlIngresoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlIngresoMouseClicked
+        Logica.setColor(Main.pnlReparacion);
+        Logica.resetColor(Main.pnlIngreso);
+        Logica.resetColor(Main.pnlArreglados);
+        
+        Reparacion p2 = new Reparacion();
+        p2.setSize(1010, 450);
+        p2.setLocation(0,0);
+        
+        Main.pnlJFrames.removeAll();
+        Main.pnlJFrames.add(p2, BorderLayout.CENTER);
+        Main.pnlJFrames.revalidate();
+        Main.pnlJFrames.repaint();
+    }//GEN-LAST:event_pnlIngresoMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

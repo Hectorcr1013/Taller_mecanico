@@ -408,11 +408,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblSalir;
-    private javax.swing.JPanel pnlArreglados;
+    public static javax.swing.JPanel pnlArreglados;
     private javax.swing.JPanel pnlBarra;
-    private javax.swing.JPanel pnlIngreso;
-    private javax.swing.JPanel pnlJFrames;
-    private javax.swing.JPanel pnlReparacion;
+    public static javax.swing.JPanel pnlIngreso;
+    public static javax.swing.JPanel pnlJFrames;
+    public static javax.swing.JPanel pnlReparacion;
     private javax.swing.JPanel pnlSalir;
     // End of variables declaration//GEN-END:variables
 }

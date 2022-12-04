@@ -5,7 +5,14 @@
 package mx.itson.tallerMecanico.entidades;
 
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import mx.itson.tallerMecanico.persistencia.Conexion;
+import mx.itson.tallerMecanico.ui.Reparacion;
 
 /**
  * En esta clase se crearan los metodos que se utilizaran para el proceso de datos del proyecto
@@ -13,7 +20,76 @@ import javax.swing.JPanel;
  */
 public class Logica {
     
+    /**
+     * Muestra en la tabla de reparacion la tabla de la base de datos conectada
+     */
+    public void mostrarTablaReparacion(){
+        
+        String consulta = "SELECT * FROM taller.reparacion";
+        
+        try {
+            
+            String[] nombreColumnas = {"id", "marca", "modelo", "anio", "color", "combustible", "detalle"};
+            String[] registros = new String[7];
+            
+            DefaultTableModel model1 = new DefaultTableModel(null, nombreColumnas);
+            
+            Connection conexion = Conexion.obtener();
+            Statement statement = conexion.createStatement();
+            ResultSet resultSet = statement.executeQuery(consulta);
+            
+            while(resultSet.next()){
+                registros [0] = resultSet.getString("id");
+                registros [1] = resultSet.getString("marca");
+                registros [2] = resultSet.getString("modelo");
+                registros [3] = resultSet.getString("anio");
+                registros [4] = resultSet.getString("color");
+                registros [5] = resultSet.getString("combustible");
+                registros [6] = resultSet.getString("detalle");
+                
+                model1.addRow(registros);
+            }
+            Reparacion.tblReparacion.setModel(model1);
+            
+        } catch (Exception e) {
+            System.out.println("Ocurrio un error: " + e.getMessage());
+        }
+    }
     
+    /**
+     * Inserta en la base de datos los valores que se agregan en los parametros
+     * @param id El id del auto que se agregará
+     * @param marca El marca del auto que se agregará
+     * @param modelo El modelo del auto que se agregará
+     * @param anio El año del auto que se agregará
+     * @param color El color del auto que se agregará
+     * @param combustible El tipo de combusible que se agregará
+     * @param detalle El defecto por el que entrará el auto al taller
+     * @return Retorna si se ejecutó la actualizacion en la base de datos.
+     */
+    public static boolean guardar(int id, String marca, String modelo, int anio, String color, String combustible, String detalle){
+        boolean resultado = false;
+        try {
+            
+           String consulta = "INSERT INTO taller.reparacion (id, marca, modelo, anio, color, combustible, detalle) VALUES (?, ?, ?, ?, ?, ?, ?)";
+           Connection conexion = Conexion.obtener();
+           PreparedStatement statement = conexion.prepareStatement(consulta, Statement.RETURN_GENERATED_KEYS);
+           statement.setInt(1, id);
+           statement.setString(2, marca);
+           statement.setString(3, modelo);
+           statement.setInt(4, anio);
+           statement.setString(5, color);
+           statement.setString(6, combustible);
+           statement.setString(7, detalle);
+           statement.executeUpdate();
+           
+           resultado = statement.getUpdateCount() == 1;
+           
+        } catch (Exception e) {
+            System.out.println("Ocurrio un error al agregar la fila: " + e);
+        }
+        return resultado;
+    }
     
     /**
      * Establece un panel del color rgb que pongamos
