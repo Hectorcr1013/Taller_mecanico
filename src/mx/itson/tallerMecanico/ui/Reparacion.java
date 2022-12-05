@@ -47,6 +47,7 @@ public class Reparacion extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         pnlReparado = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -219,6 +220,7 @@ public class Reparacion extends javax.swing.JPanel {
         );
 
         jPanel1.add(pnlReparado, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 350, 170, 50));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 330, 10));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -281,30 +283,24 @@ public class Reparacion extends javax.swing.JPanel {
 
     private void pnlEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlEliminarMouseClicked
             
-            Logica.eliminarModelo();
+            Logica.eliminarAutoDeReparacion();
+            
+            Logica.setColor(Main.pnlReparacion);
+            Logica.resetColor(Main.pnlIngreso);
+            Logica.resetColor(Main.pnlArreglados);
+            
+            Logica logica = new Logica();
+            logica.mostrarTablaReparacion();
+    }//GEN-LAST:event_pnlEliminarMouseClicked
+
+    private void pnlReparadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlReparadoMouseClicked
+            
+            Logica.transferirAutoAArreglado();
+            Logica.eliminarAutoDeReparacion();
             
             Logica.setColor(Main.pnlArreglados);
             Logica.resetColor(Main.pnlIngreso);
             Logica.resetColor(Main.pnlReparacion);
-        
-            Reparacion p2 = new Reparacion();
-            p2.setSize(1010, 450);
-            p2.setLocation(0,0);
-        
-            Main.pnlJFrames.removeAll();
-            Main.pnlJFrames.add(p2, BorderLayout.CENTER);
-            Main.pnlJFrames.revalidate();
-            Main.pnlJFrames.repaint();
-    }//GEN-LAST:event_pnlEliminarMouseClicked
-
-    private void pnlReparadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlReparadoMouseClicked
-        
-            Logica.eliminarModelo();
-            Logica.transferirAutoAArreglado();
-            
-            Logica.setColor(Main.pnlArreglados);
-            Logica.resetColor(Main.pnlIngreso);
-            Logica.resetColor(Main.pnlArreglados);
         
             Arreglado p3 = new Arreglado();
             p3.setSize(1010, 450);
@@ -327,6 +323,7 @@ public class Reparacion extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel pnlAgregar;
     private javax.swing.JPanel pnlEliminar;
     private javax.swing.JPanel pnlModificar;

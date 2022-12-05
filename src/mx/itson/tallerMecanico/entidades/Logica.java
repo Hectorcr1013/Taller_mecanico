@@ -10,11 +10,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.NumberFormat;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import mx.itson.tallerMecanico.persistencia.Conexion;
 import mx.itson.tallerMecanico.ui.Arreglado;
+import static mx.itson.tallerMecanico.ui.Arreglado.tblArreglados;
 import static mx.itson.tallerMecanico.ui.Main.pnlJFrames;
 import mx.itson.tallerMecanico.ui.Reparacion;
 
@@ -69,8 +72,8 @@ public class Logica {
         
         try {
             
-            String[] nombreColumnas = {"id", "marca", "modelo", "detalle", "costo"};
-            String[] registros = new String[5];
+            String[] nombreColumnas = {"id", "marca", "modelo", "anio", "color", "combustible", "detalle"};
+            String[] registros = new String[7];
             
             DefaultTableModel model2 = new DefaultTableModel(null, nombreColumnas);
             
@@ -82,7 +85,10 @@ public class Logica {
                 registros [0] = resultSet.getString("id");
                 registros [1] = resultSet.getString("marca");
                 registros [2] = resultSet.getString("modelo");
-                registros [3] = resultSet.getString("detalle");
+                registros [3] = resultSet.getString("anio");
+                registros [4] = resultSet.getString("color");
+                registros [5] = resultSet.getString("combustible");
+                registros [6] = resultSet.getString("detalle");
                 model2.addRow(registros);
             }
             Arreglado.tblArreglados.setModel(model2);
@@ -128,7 +134,7 @@ public class Logica {
     /**
      * Elimina la fila seleccionada de la tabla  
      */
-    public static void eliminarModelo(){
+    public static void eliminarAutoDeReparacion(){
         
         try {
             
@@ -160,7 +166,32 @@ public class Logica {
     }
     
     /**
-     * Transfiere la fila(el modelo) de la tabla buscar a la tabla vendido
+     * Elimina la fila seleccionada de la tabla  
+     */
+    public static void eliminarAutoDeArreglado(){
+        
+        try {
+            
+            int filaSeleccionada = Arreglado.tblArreglados.getSelectedRow();
+            String consulta = "DELETE FROM taller.arreglados WHERE id=" + Arreglado.tblArreglados.getValueAt(filaSeleccionada,0);
+            Connection conexion = Conexion.obtener();
+            Statement statement = conexion.createStatement();
+            
+            int n = statement.executeUpdate(consulta);
+            
+            if (n >= 0) {
+                System.out.println("Auto eliminado de tabla arreglados");
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Ocurrio un error al intentar elminiar la fila: " + e);
+            JOptionPane.showMessageDialog(null, "Selecciona un auto");
+        }
+        
+    }
+    
+    /**
+     * Transfiere la fila(el auto) de la tabla reparacion a la tabla arreglado
      */
     public static void transferirAutoAArreglado(){
         try {
@@ -169,15 +200,26 @@ public class Logica {
             Connection conexion = Conexion.obtener();
             Statement statement = conexion.createStatement();
             
-            int n = statement.executeUpdate("INSERT INTO taller.arreglados(id, marca, modelo, detalle) SELECT id, marca, modelo, detalle FROM taller.reparacion WHERE (id=" + Reparacion.tblReparacion.getValueAt(filaSeleccionada,0)+");");
+            int n = statement.executeUpdate("INSERT INTO taller.arreglados(id, marca, modelo, anio, color, combustible, detalle) SELECT id, marca, modelo, anio, color, combustible, detalle FROM taller.reparacion WHERE (id=" + Reparacion.tblReparacion.getValueAt(filaSeleccionada,0)+");");
             
             if (n >= 0) {
                 System.out.println("Auto transferido a Arreglado");
             }
             
         } catch (Exception e) {
-            System.out.println("Ocurrio un error al intentar transferir el modelo: " + e);
+            System.out.println("Ocurrio un error al intentar transferir el auto: " + e);
         }
+    }
+    
+    public void obtenerTotal(){
+        
+        int numeroFilas = tblArreglados.getRowCount();
+        int total = numeroFilas * 1000;
+        
+        Locale local = new Locale("es", "MX");
+        NumberFormat formatoMoneda = NumberFormat.getCurrencyInstance(local);
+        
+        Arreglado.lblTotal.setText(formatoMoneda.format(total));
     }
     
     /**

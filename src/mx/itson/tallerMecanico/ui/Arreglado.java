@@ -13,15 +13,18 @@ import mx.itson.tallerMecanico.entidades.Logica;
  * @author Hector
  */
 public class Arreglado extends javax.swing.JPanel {
-
+        
+    Logica logica = new Logica();
+        
     /**
      * Creates new form Arreglado
      */
     public Arreglado() {
         initComponents();
         
-        Logica logica = new Logica();
+       
         logica.mostrarTablaArreglado();
+        logica.obtenerTotal();
     }
 
     /**
@@ -44,6 +47,9 @@ public class Arreglado extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblArreglados = new javax.swing.JTable();
+        jLabel6 = new javax.swing.JLabel();
+        lblTotal = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -87,10 +93,13 @@ public class Arreglado extends javax.swing.JPanel {
             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jPanel1.add(pnlAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 170, 170, 50));
+        jPanel1.add(pnlAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 120, 170, 50));
 
         pnlEliminar.setBackground(new java.awt.Color(18, 90, 173));
         pnlEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlEliminarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 pnlEliminarMouseEntered(evt);
             }
@@ -116,7 +125,7 @@ public class Arreglado extends javax.swing.JPanel {
             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jPanel1.add(pnlEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 240, -1, -1));
+        jPanel1.add(pnlEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 190, -1, -1));
 
         pnlModificar.setBackground(new java.awt.Color(18, 90, 173));
         pnlModificar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -145,22 +154,33 @@ public class Arreglado extends javax.swing.JPanel {
             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jPanel1.add(pnlModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 310, -1, -1));
+        jPanel1.add(pnlModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 260, -1, -1));
 
         tblArreglados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "id", "marca", "modelo", "detalle", "costo"
+                "id", "marca", "modelo", "año", "color", "combustible", "detalle"
             }
         ));
         jScrollPane1.setViewportView(tblArreglados);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 720, 270));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 720, 280));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("Total de autos arreglados en remate:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 400, 350, 30));
+
+        lblTotal.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTotal.setForeground(new java.awt.Color(0, 0, 0));
+        lblTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lblTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 400, 170, 30));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 280, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -213,6 +233,12 @@ public class Arreglado extends javax.swing.JPanel {
         pnlModificar.setBackground(new Color(18,90,173));
     }//GEN-LAST:event_pnlModificarMouseExited
 
+    private void pnlEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlEliminarMouseClicked
+        Logica.eliminarAutoDeArreglado();
+        logica.mostrarTablaArreglado();
+        logica.obtenerTotal();
+    }//GEN-LAST:event_pnlEliminarMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -220,8 +246,11 @@ public class Arreglado extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    public static javax.swing.JLabel lblTotal;
     private javax.swing.JPanel pnlAgregar;
     private javax.swing.JPanel pnlEliminar;
     private javax.swing.JPanel pnlModificar;

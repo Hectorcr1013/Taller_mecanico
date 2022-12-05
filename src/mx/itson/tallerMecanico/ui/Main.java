@@ -67,9 +67,10 @@ public class Main extends javax.swing.JFrame {
         lblSalir = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         lblFecha = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         pnlJFrames = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -228,10 +229,10 @@ public class Main extends javax.swing.JFrame {
         lblFecha.setText("Hoy es 03 de noviembre del 2022");
         jPanel2.add(lblFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Taller Automotriz");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(209, 62, 240, 29));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Taller Automotriz");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(209, 62, 240, 29));
 
         Fondo.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 1010, 180));
 
@@ -252,6 +253,12 @@ public class Main extends javax.swing.JFrame {
         );
 
         Fondo.add(pnlJFrames, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, 1010, 450));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Remate solo por hoy cualquier falla a solo $1000");
+        Fondo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 1010, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -414,6 +421,7 @@ public class Main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Fondo;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
