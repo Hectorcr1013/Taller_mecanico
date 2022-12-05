@@ -15,7 +15,6 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import mx.itson.tallerMecanico.persistencia.Conexion;
 import mx.itson.tallerMecanico.ui.Arreglado;
-import mx.itson.tallerMecanico.ui.Costo;
 import static mx.itson.tallerMecanico.ui.Main.pnlJFrames;
 import mx.itson.tallerMecanico.ui.Reparacion;
 
@@ -84,7 +83,6 @@ public class Logica {
                 registros [1] = resultSet.getString("marca");
                 registros [2] = resultSet.getString("modelo");
                 registros [3] = resultSet.getString("detalle");
-                registros [4] = Costo.txfCosto.getText();
                 model2.addRow(registros);
             }
             Arreglado.tblArreglados.setModel(model2);

@@ -298,20 +298,7 @@ public class Reparacion extends javax.swing.JPanel {
     }//GEN-LAST:event_pnlEliminarMouseClicked
 
     private void pnlReparadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlReparadoMouseClicked
-        try {
-            Costo p4 = new Costo();
-            p4.setSize(326, 175);
-            p4.setLocation(342, 137);
         
-            Main.pnlJFrames.removeAll();
-            Main.pnlJFrames.add(p4, BorderLayout.CENTER);
-            Main.pnlJFrames.revalidate();
-            Main.pnlJFrames.repaint();
-        } catch (Exception e) {
-            System.out.println("Ocurrio un error: "+e);
-        }
-        
-        try {
             Logica.eliminarModelo();
             Logica.transferirAutoAArreglado();
             
@@ -327,9 +314,6 @@ public class Reparacion extends javax.swing.JPanel {
             Main.pnlJFrames.add(p3, BorderLayout.CENTER);
             Main.pnlJFrames.revalidate();
             Main.pnlJFrames.repaint();
-        } catch (Exception e) {
-            System.out.println("Ocurrio un error: "+e);
-        }
             
     }//GEN-LAST:event_pnlReparadoMouseClicked
 
