@@ -4,14 +4,19 @@
  */
 package mx.itson.tallerMecanico.entidades;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import mx.itson.tallerMecanico.persistencia.Conexion;
+import mx.itson.tallerMecanico.ui.Arreglado;
+import mx.itson.tallerMecanico.ui.Costo;
+import static mx.itson.tallerMecanico.ui.Main.pnlJFrames;
 import mx.itson.tallerMecanico.ui.Reparacion;
 
 /**
@@ -57,6 +62,39 @@ public class Logica {
     }
     
     /**
+     * Muestra en la tabla de reparacion la tabla de la base de datos conectada
+     */
+    public void mostrarTablaArreglado(){
+        
+        String consulta = "SELECT * FROM taller.arreglados";
+        
+        try {
+            
+            String[] nombreColumnas = {"id", "marca", "modelo", "detalle", "costo"};
+            String[] registros = new String[5];
+            
+            DefaultTableModel model2 = new DefaultTableModel(null, nombreColumnas);
+            
+            Connection conexion = Conexion.obtener();
+            Statement statement = conexion.createStatement();
+            ResultSet resultSet = statement.executeQuery(consulta);
+            
+            while(resultSet.next()){
+                registros [0] = resultSet.getString("id");
+                registros [1] = resultSet.getString("marca");
+                registros [2] = resultSet.getString("modelo");
+                registros [3] = resultSet.getString("detalle");
+                registros [4] = Costo.txfCosto.getText();
+                model2.addRow(registros);
+            }
+            Arreglado.tblArreglados.setModel(model2);
+            
+        } catch (Exception e) {
+            System.out.println("Ocurrio un error: " + e.getMessage());
+        }
+    }
+    
+    /**
      * Inserta en la base de datos los valores que se agregan en los parametros
      * @param marca El marca del auto que se agregará
      * @param modelo El modelo del auto que se agregará
@@ -87,6 +125,61 @@ public class Logica {
             System.out.println("Ocurrio un error al agregar la fila: " + e);
         }
         return resultado;
+    }
+    
+    /**
+     * Elimina la fila seleccionada de la tabla  
+     */
+    public static void eliminarModelo(){
+        
+        try {
+            
+            int filaSeleccionada = Reparacion.tblReparacion.getSelectedRow();
+            String consulta = "DELETE FROM taller.reparacion WHERE id=" + Reparacion.tblReparacion.getValueAt(filaSeleccionada,0);
+            Connection conexion = Conexion.obtener();
+            Statement statement = conexion.createStatement();
+            
+            int n = statement.executeUpdate(consulta);
+            
+            if (n >= 0) {
+                System.out.println("Auto eliminado de tabla reparacion");
+            }
+            
+            Arreglado p3 = new Arreglado();
+            p3.setSize(1010, 450);
+            p3.setLocation(0,0);
+        
+            pnlJFrames.removeAll();
+            pnlJFrames.add(p3, BorderLayout.CENTER);
+            pnlJFrames.revalidate();
+            pnlJFrames.repaint();
+            
+        } catch (Exception e) {
+            System.out.println("Ocurrio un error al intentar elminiar la fila: " + e);
+            JOptionPane.showMessageDialog(null, "Selecciona un auto");
+        }
+        
+    }
+    
+    /**
+     * Transfiere la fila(el modelo) de la tabla buscar a la tabla vendido
+     */
+    public static void transferirAutoAArreglado(){
+        try {
+            
+            int filaSeleccionada = Reparacion.tblReparacion.getSelectedRow();
+            Connection conexion = Conexion.obtener();
+            Statement statement = conexion.createStatement();
+            
+            int n = statement.executeUpdate("INSERT INTO taller.arreglados(id, marca, modelo, detalle) SELECT id, marca, modelo, detalle FROM taller.reparacion WHERE (id=" + Reparacion.tblReparacion.getValueAt(filaSeleccionada,0)+");");
+            
+            if (n >= 0) {
+                System.out.println("Auto transferido a Arreglado");
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Ocurrio un error al intentar transferir el modelo: " + e);
+        }
     }
     
     /**

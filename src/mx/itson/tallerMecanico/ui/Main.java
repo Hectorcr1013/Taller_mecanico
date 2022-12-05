@@ -137,6 +137,9 @@ public class Main extends javax.swing.JFrame {
         pnlArreglados.setBackground(new java.awt.Color(18, 90, 173));
         pnlArreglados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlArreglados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlArregladosMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 pnlArregladosMouseEntered(evt);
             }
@@ -355,6 +358,21 @@ public class Main extends javax.swing.JFrame {
         pnlJFrames.revalidate();
         pnlJFrames.repaint();
     }//GEN-LAST:event_pnlReparacionMouseClicked
+
+    private void pnlArregladosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlArregladosMouseClicked
+        Logica.setColor(pnlArreglados);
+        Logica.resetColor(pnlIngreso);
+        Logica.resetColor(pnlReparacion);
+        
+        Arreglado p3 = new Arreglado();
+        p3.setSize(1010, 450);
+        p3.setLocation(0,0);
+        
+        pnlJFrames.removeAll();
+        pnlJFrames.add(p3, BorderLayout.CENTER);
+        pnlJFrames.revalidate();
+        pnlJFrames.repaint();
+    }//GEN-LAST:event_pnlArregladosMouseClicked
 
     
     

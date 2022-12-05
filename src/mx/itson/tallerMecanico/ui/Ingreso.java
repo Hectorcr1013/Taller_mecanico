@@ -246,7 +246,7 @@ public class Ingreso extends javax.swing.JPanel {
             } else {
                 
                 Logica.guardar(mar, mod, Integer.parseInt(anio), col, com, det);
-                JOptionPane.showMessageDialog(null,"Modelo añadido");
+                JOptionPane.showMessageDialog(null,"Auto enviado a reparación");
                 
                 Logica.setColor(Main.pnlReparacion);
                 Logica.resetColor(Main.pnlIngreso);

@@ -12,17 +12,16 @@ import mx.itson.tallerMecanico.entidades.Logica;
  *
  * @author Hector
  */
-public class Reparacion extends javax.swing.JPanel {
-    
+public class Arreglado extends javax.swing.JPanel {
+
     /**
-     * Creates new form Reparacion
+     * Creates new form Arreglado
      */
-    public Reparacion() {
+    public Arreglado() {
         initComponents();
         
         Logica logica = new Logica();
-        logica.mostrarTablaReparacion();
-        
+        logica.mostrarTablaArreglado();
     }
 
     /**
@@ -37,16 +36,14 @@ public class Reparacion extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblReparacion = new javax.swing.JTable();
         pnlAgregar = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         pnlEliminar = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         pnlModificar = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        pnlReparado = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblArreglados = new javax.swing.JTable();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -54,46 +51,11 @@ public class Reparacion extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Autos en reparación");
+        jLabel2.setText("Autos reparados");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mx/itson/tallerMecanico/imagenes/logo_cars_2_250x210_1_100x80.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 10, 100, 80));
-
-        tblReparacion.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "id", "marca", "modelo", "año", "color", "combustible", "detalle"
-            }
-        ));
-        jScrollPane1.setViewportView(tblReparacion);
-        if (tblReparacion.getColumnModel().getColumnCount() > 0) {
-            tblReparacion.getColumnModel().getColumn(0).setMinWidth(50);
-            tblReparacion.getColumnModel().getColumn(0).setPreferredWidth(50);
-            tblReparacion.getColumnModel().getColumn(0).setMaxWidth(50);
-            tblReparacion.getColumnModel().getColumn(1).setMinWidth(80);
-            tblReparacion.getColumnModel().getColumn(1).setPreferredWidth(80);
-            tblReparacion.getColumnModel().getColumn(1).setMaxWidth(80);
-            tblReparacion.getColumnModel().getColumn(2).setMinWidth(80);
-            tblReparacion.getColumnModel().getColumn(2).setPreferredWidth(80);
-            tblReparacion.getColumnModel().getColumn(2).setMaxWidth(80);
-            tblReparacion.getColumnModel().getColumn(3).setMinWidth(70);
-            tblReparacion.getColumnModel().getColumn(3).setPreferredWidth(70);
-            tblReparacion.getColumnModel().getColumn(3).setMaxWidth(70);
-            tblReparacion.getColumnModel().getColumn(4).setMinWidth(80);
-            tblReparacion.getColumnModel().getColumn(4).setPreferredWidth(80);
-            tblReparacion.getColumnModel().getColumn(4).setMaxWidth(80);
-            tblReparacion.getColumnModel().getColumn(5).setMinWidth(90);
-            tblReparacion.getColumnModel().getColumn(5).setPreferredWidth(90);
-            tblReparacion.getColumnModel().getColumn(5).setMaxWidth(90);
-        }
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 720, 320));
 
         pnlAgregar.setBackground(new java.awt.Color(18, 90, 173));
         pnlAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -125,13 +87,10 @@ public class Reparacion extends javax.swing.JPanel {
             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jPanel1.add(pnlAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 120, 170, 50));
+        jPanel1.add(pnlAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 170, 170, 50));
 
         pnlEliminar.setBackground(new java.awt.Color(18, 90, 173));
         pnlEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pnlEliminarMouseClicked(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 pnlEliminarMouseEntered(evt);
             }
@@ -157,7 +116,7 @@ public class Reparacion extends javax.swing.JPanel {
             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jPanel1.add(pnlEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 190, -1, -1));
+        jPanel1.add(pnlEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 240, -1, -1));
 
         pnlModificar.setBackground(new java.awt.Color(18, 90, 173));
         pnlModificar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -186,39 +145,22 @@ public class Reparacion extends javax.swing.JPanel {
             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jPanel1.add(pnlModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 260, -1, -1));
+        jPanel1.add(pnlModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 310, -1, -1));
 
-        pnlReparado.setBackground(new java.awt.Color(18, 90, 173));
-        pnlReparado.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pnlReparadoMouseClicked(evt);
+        tblArreglados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "id", "marca", "modelo", "detalle", "costo"
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pnlReparadoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pnlReparadoMouseExited(evt);
-            }
-        });
+        ));
+        jScrollPane1.setViewportView(tblArreglados);
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Reparado");
-        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        javax.swing.GroupLayout pnlReparadoLayout = new javax.swing.GroupLayout(pnlReparado);
-        pnlReparado.setLayout(pnlReparadoLayout);
-        pnlReparadoLayout.setHorizontalGroup(
-            pnlReparadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-        );
-        pnlReparadoLayout.setVerticalGroup(
-            pnlReparadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(pnlReparado, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 350, 170, 50));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 720, 270));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -231,6 +173,21 @@ public class Reparacion extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void pnlAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlAgregarMouseClicked
+        Logica.setColor(Main.pnlIngreso);
+        Logica.resetColor(Main.pnlReparacion);
+        Logica.resetColor(Main.pnlArreglados);
+
+        Ingreso p1 = new Ingreso();
+        p1.setSize(1010, 450);
+        p1.setLocation(0,0);
+
+        Main.pnlJFrames.removeAll();
+        Main.pnlJFrames.add(p1, BorderLayout.CENTER);
+        Main.pnlJFrames.revalidate();
+        Main.pnlJFrames.repaint();
+    }//GEN-LAST:event_pnlAgregarMouseClicked
 
     private void pnlAgregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlAgregarMouseEntered
         pnlAgregar.setBackground(new Color(21,101,192));
@@ -256,83 +213,6 @@ public class Reparacion extends javax.swing.JPanel {
         pnlModificar.setBackground(new Color(18,90,173));
     }//GEN-LAST:event_pnlModificarMouseExited
 
-    private void pnlReparadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlReparadoMouseEntered
-        pnlReparado.setBackground(new Color(21,101,192));
-    }//GEN-LAST:event_pnlReparadoMouseEntered
-
-    private void pnlReparadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlReparadoMouseExited
-        pnlReparado.setBackground(new Color(18,90,173));
-    }//GEN-LAST:event_pnlReparadoMouseExited
-
-    private void pnlAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlAgregarMouseClicked
-        Logica.setColor(Main.pnlIngreso);
-        Logica.resetColor(Main.pnlReparacion);
-        Logica.resetColor(Main.pnlArreglados);
-        
-        Ingreso p1 = new Ingreso();
-        p1.setSize(1010, 450);
-        p1.setLocation(0,0);
-        
-        Main.pnlJFrames.removeAll();
-        Main.pnlJFrames.add(p1, BorderLayout.CENTER);
-        Main.pnlJFrames.revalidate();
-        Main.pnlJFrames.repaint();
-    }//GEN-LAST:event_pnlAgregarMouseClicked
-
-    private void pnlEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlEliminarMouseClicked
-            
-            Logica.eliminarModelo();
-            
-            Logica.setColor(Main.pnlArreglados);
-            Logica.resetColor(Main.pnlIngreso);
-            Logica.resetColor(Main.pnlReparacion);
-        
-            Reparacion p2 = new Reparacion();
-            p2.setSize(1010, 450);
-            p2.setLocation(0,0);
-        
-            Main.pnlJFrames.removeAll();
-            Main.pnlJFrames.add(p2, BorderLayout.CENTER);
-            Main.pnlJFrames.revalidate();
-            Main.pnlJFrames.repaint();
-    }//GEN-LAST:event_pnlEliminarMouseClicked
-
-    private void pnlReparadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlReparadoMouseClicked
-        try {
-            Costo p4 = new Costo();
-            p4.setSize(326, 175);
-            p4.setLocation(342, 137);
-        
-            Main.pnlJFrames.removeAll();
-            Main.pnlJFrames.add(p4, BorderLayout.CENTER);
-            Main.pnlJFrames.revalidate();
-            Main.pnlJFrames.repaint();
-        } catch (Exception e) {
-            System.out.println("Ocurrio un error: "+e);
-        }
-        
-        try {
-            Logica.eliminarModelo();
-            Logica.transferirAutoAArreglado();
-            
-            Logica.setColor(Main.pnlArreglados);
-            Logica.resetColor(Main.pnlIngreso);
-            Logica.resetColor(Main.pnlArreglados);
-        
-            Arreglado p3 = new Arreglado();
-            p3.setSize(1010, 450);
-            p3.setLocation(0,0);
-        
-            Main.pnlJFrames.removeAll();
-            Main.pnlJFrames.add(p3, BorderLayout.CENTER);
-            Main.pnlJFrames.revalidate();
-            Main.pnlJFrames.repaint();
-        } catch (Exception e) {
-            System.out.println("Ocurrio un error: "+e);
-        }
-            
-    }//GEN-LAST:event_pnlReparadoMouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -340,13 +220,11 @@ public class Reparacion extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel pnlAgregar;
     private javax.swing.JPanel pnlEliminar;
     private javax.swing.JPanel pnlModificar;
-    private javax.swing.JPanel pnlReparado;
-    public static javax.swing.JTable tblReparacion;
+    public static javax.swing.JTable tblArreglados;
     // End of variables declaration//GEN-END:variables
 }
