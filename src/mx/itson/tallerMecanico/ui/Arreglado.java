@@ -6,6 +6,8 @@ package mx.itson.tallerMecanico.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 import mx.itson.tallerMecanico.entidades.Auto;
 
 /**
@@ -129,6 +131,9 @@ public class Arreglado extends javax.swing.JPanel {
 
         pnlModificar.setBackground(new java.awt.Color(18, 90, 173));
         pnlModificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlModificarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 pnlModificarMouseEntered(evt);
             }
@@ -209,6 +214,8 @@ public class Arreglado extends javax.swing.JPanel {
         Main.pnlJFrames.repaint();
     }//GEN-LAST:event_pnlAgregarMouseClicked
 
+    
+    
     private void pnlAgregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlAgregarMouseEntered
         pnlAgregar.setBackground(new Color(21,101,192));
     }//GEN-LAST:event_pnlAgregarMouseEntered
@@ -239,6 +246,40 @@ public class Arreglado extends javax.swing.JPanel {
         logica.obtenerTotal();
     }//GEN-LAST:event_pnlEliminarMouseClicked
 
+    private void pnlModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlModificarMouseClicked
+        int fila = tblArreglados.getSelectedRow();
+        int idAuto = Integer.parseInt(tblArreglados.getModel().getValueAt(fila, 0).toString());
+        
+        Ingreso2 p1 = new Ingreso2(true, idAuto);
+        p1.setSize(1010, 450);
+        p1.setLocation(0,0);
+        
+        Main.pnlJFrames.removeAll();
+        Main.pnlJFrames.add(p1, BorderLayout.CENTER);
+        Main.pnlJFrames.revalidate();
+        Main.pnlJFrames.repaint();
+        
+        cargarTable();
+    }//GEN-LAST:event_pnlModificarMouseClicked
+
+    private void cargarTable(){
+        List<Auto> autos = Auto.obtenerTodosArreglado();
+        DefaultTableModel modelo1 =(DefaultTableModel)tblArreglados.getModel();
+        modelo1.setRowCount(0);
+        
+        for(Auto a : autos){
+            modelo1.addRow(new Object[] {
+                a.getId(),
+                a.getMarca(),
+                a.getModelo(),
+                a.getAnio(),
+                a.getColor(),
+                a.getCombustible(),
+                a.getDetalle()
+            });
+        }
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

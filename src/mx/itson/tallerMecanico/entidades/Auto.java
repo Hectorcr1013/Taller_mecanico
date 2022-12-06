@@ -4,7 +4,6 @@
  */
 package mx.itson.tallerMecanico.entidades;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,7 +19,6 @@ import javax.swing.table.DefaultTableModel;
 import mx.itson.tallerMecanico.persistencia.Conexion;
 import mx.itson.tallerMecanico.ui.Arreglado;
 import static mx.itson.tallerMecanico.ui.Arreglado.tblArreglados;
-import static mx.itson.tallerMecanico.ui.Main.pnlJFrames;
 import mx.itson.tallerMecanico.ui.Reparacion;
 
 /**
@@ -43,7 +41,35 @@ public class Auto {
             
             Connection conexion = Conexion.obtener();
             Statement statement = conexion.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT id, marca, modelo, anio, color, combustible, detalle FROM taller.Reparacion");
+            ResultSet resultSet = statement.executeQuery("SELECT id, marca, modelo, anio, color, combustible, detalle FROM taller.reparacion");
+            
+            while(resultSet.next()) {
+                Auto auto = new Auto();
+                auto.setId(resultSet.getInt(1));
+                auto.setMarca(resultSet.getString(2));
+                auto.setModelo(resultSet.getString(3));
+                auto.setAnio(resultSet.getInt(4));
+                auto.setColor(resultSet.getString(5));
+                auto.setCombustible(resultSet.getString(6));
+                auto.setDetalle(resultSet.getString(7));
+                
+                autos.add(auto);
+                
+            }
+        } catch (Exception e) {
+            System.out.println("Ocurrio un error: "+ e.getMessage());
+        }
+        return autos;
+    }
+    
+    
+    public static List<Auto> obtenerTodosArreglado() {
+        List<Auto> autos = new ArrayList<>();
+        try {
+            
+            Connection conexion = Conexion.obtener();
+            Statement statement = conexion.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT id, marca, modelo, anio, color, combustible, detalle FROM taller.arreglados");
             
             while(resultSet.next()) {
                 Auto auto = new Auto();
@@ -281,6 +307,45 @@ public class Auto {
     
     /**
      * 
+     * @param id
+     * @param marca
+     * @param modelo
+     * @param anio
+     * @param color
+     * @param combustible
+     * @param detalle
+     * @return 
+     */
+    public static boolean editarArreglado(int id, String marca, String modelo, int anio, String color, String combustible, String detalle){
+        boolean resultado = false;
+        
+        try {
+            Connection conexion = Conexion.obtener();
+            String consulta = "UPDATE taller.arreglados SET marca = ?, modelo = ?, anio = ?, color = ?, combustible = ?, detalle = ? WHERE id = ?";
+            PreparedStatement statement = conexion.prepareStatement(consulta);
+            
+            statement.setString(1, marca);
+            statement.setString(2, modelo);
+            statement.setInt(3, anio);
+            statement.setString(4, color);
+            statement.setString(5, combustible);
+            statement.setString(6, detalle);
+            statement.setInt(7, id);
+            
+            statement.execute();
+            
+            resultado = statement.getUpdateCount() == 1;
+            conexion.close();
+            
+        } catch (Exception e) {
+            System.out.println("Ocurrio un error: "+e);
+        }
+        
+        return resultado;
+    }
+    
+    /**
+     * 
      */
     public void obtenerTotal(){
         
@@ -299,6 +364,32 @@ public class Auto {
         try {
             Connection conexion = Conexion.obtener();
             PreparedStatement statement = conexion.prepareStatement("SELECT id, marca, modelo, anio, color, combustible, detalle FROM taller.reparacion WHERE id = ?");
+            statement.setInt(1, id);
+            
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                auto.setId(resultSet.getInt(1));
+                auto.setMarca(resultSet.getString(2));
+                auto.setModelo(resultSet.getString(3));
+                auto.setAnio(resultSet.getInt(4));
+                auto.setColor(resultSet.getString(5));
+                auto.setCombustible(resultSet.getString(6));
+                auto.setDetalle(resultSet.getString(7));
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Ocurrio un error: "+e.getMessage());
+        }
+        return auto;
+    }
+    
+    
+    public static Auto obtenerPorIdArreglado(int id){
+        
+        Auto auto = new Auto();
+        try {
+            Connection conexion = Conexion.obtener();
+            PreparedStatement statement = conexion.prepareStatement("SELECT id, marca, modelo, anio, color, combustible, detalle FROM taller.arreglados WHERE id = ?");
             statement.setInt(1, id);
             
             ResultSet resultSet = statement.executeQuery();

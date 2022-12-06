@@ -13,21 +13,21 @@ import mx.itson.tallerMecanico.entidades.Auto;
  *
  * @author Hector
  */
-public class Ingreso extends javax.swing.JPanel {
+public class Ingreso2 extends javax.swing.JPanel {
 
     int id;
     
     /**
      * 
      * @param modal
-     * @param idReparacion 
+     * @param idArreglado 
      */
-    public Ingreso( boolean modal, int idReparacion) {
+    public Ingreso2( boolean modal, int idArreglado) {
         initComponents();
         
-        this.id = idReparacion;
+        this.id = idArreglado;
         if(id != 0){
-            Auto auto = Auto.obtenerPorIdReparacion(idReparacion);
+            Auto auto = Auto.obtenerPorIdArreglado(idArreglado);
             txfMarca.setText(auto.getMarca());
             txfModelo.setText(auto.getModelo());
             txfAnio.setText(Integer.toString(auto.getAnio()));
@@ -37,10 +37,11 @@ public class Ingreso extends javax.swing.JPanel {
         }
     }
     
+    
     /**
      * 
      */
-    public Ingreso(){
+    public Ingreso2(){
         initComponents();
         
     }
@@ -191,7 +192,6 @@ public class Ingreso extends javax.swing.JPanel {
             }
         });
 
-        jLabel9.setBackground(new java.awt.Color(18, 90, 173));
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -270,7 +270,7 @@ public class Ingreso extends javax.swing.JPanel {
                 boolean resultado = this.id == 0 ?
                 
                 Auto.guardar(mar, mod, Integer.parseInt(anio), col, com, det):
-                Auto.editarReparacion(this.id, mar, mod, Integer.parseInt(anio), col, com, det);
+                Auto.editarArreglado(this.id, mar, mod, Integer.parseInt(anio), col, com, det);
                 
                 if (resultado){
                     JOptionPane.showMessageDialog(this, "El auto se guardó correctamente", "Auto guardado", JOptionPane.INFORMATION_MESSAGE);
@@ -282,12 +282,12 @@ public class Ingreso extends javax.swing.JPanel {
                 Auto.resetColor(Main.pnlIngreso);
                 Auto.resetColor(Main.pnlArreglados);
         
-                Reparacion p2 = new Reparacion();
-                p2.setSize(1010, 450);
-                p2.setLocation(0,0);
+                Arreglado p3 = new Arreglado();
+                p3.setSize(1010, 450);
+                p3.setLocation(0,0);
         
                 Main.pnlJFrames.removeAll();
-                Main.pnlJFrames.add(p2, BorderLayout.CENTER);
+                Main.pnlJFrames.add(p3, BorderLayout.CENTER);
                 Main.pnlJFrames.revalidate();
                 Main.pnlJFrames.repaint();
             
