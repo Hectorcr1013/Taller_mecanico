@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package mx.itson.tallerMecanico.entidades;
 
 import java.awt.Color;
@@ -35,6 +31,10 @@ public class Auto {
     private String combustible;
     private String detalle;
     
+    /**
+     * Este metodo obtiene todos los datos de la tabla de reparacion
+     * @return La lista de los datos de la tabla de reparacion
+     */
     public static List<Auto> obtenerTodosReparacion() {
         List<Auto> autos = new ArrayList<>();
         try {
@@ -62,7 +62,10 @@ public class Auto {
         return autos;
     }
     
-    
+    /**
+     * Este metodo obtiene todos los datos de la tabla de Arreglado
+     * @return La lista de los datos de la tabla de arreglado
+     */
     public static List<Auto> obtenerTodosArreglado() {
         List<Auto> autos = new ArrayList<>();
         try {
@@ -196,7 +199,7 @@ public class Auto {
     }
     
     /**
-     * Elimina la fila seleccionada de la tabla  
+     * Elimina la fila seleccionada de la tabla de reparacion
      */
     public static void eliminarAutoDeReparacion(){
         
@@ -221,7 +224,7 @@ public class Auto {
     }
     
     /**
-     * Elimina la fila seleccionada de la tabla  
+     * Elimina la fila seleccionada de la tabla de arreglado
      */
     public static void eliminarAutoDeArreglado(){
         
@@ -267,15 +270,15 @@ public class Auto {
     }
     
     /**
-     * 
-     * @param id
-     * @param marca
-     * @param modelo
-     * @param anio
-     * @param color
-     * @param combustible
-     * @param detalle
-     * @return 
+     * Edita los valores de la tabla reparacion
+     * @param id El id unico del auto que se editará de la tabla reparacion
+     * @param marca El marca del auto que se editará de la tabla reparacion
+     * @param modelo El modelo del auto que se editará de la tabla reparacion
+     * @param anio El año del auto que se editará de la tabla reparacion
+     * @param color El color del auto que se editará de la tabla reparacion
+     * @param combustible El tipo de combusible que se editará de la tabla reparacion
+     * @param detalle El defecto por el que el auto entró al taller y que se editará de la tabla reparacion
+     * @return resultado si se actualizó la cuenta o no de la tabla reparacion
      */
     public static boolean editarReparacion(int id, String marca, String modelo, int anio, String color, String combustible, String detalle){
         boolean resultado = false;
@@ -306,15 +309,15 @@ public class Auto {
     }
     
     /**
-     * 
-     * @param id
-     * @param marca
-     * @param modelo
-     * @param anio
-     * @param color
-     * @param combustible
-     * @param detalle
-     * @return 
+     * Edita los valores de la tabla arreglado
+     * @param id El id unico del auto que se editará de la tabla reparacion
+     * @param marca El marca del auto que se editará de la tabla reparacion
+     * @param modelo El modelo del auto que se editará de la tabla reparacion
+     * @param anio El año del auto que se editará de la tabla reparacion
+     * @param color El color del auto que se editará de la tabla reparacion
+     * @param combustible El tipo de combusible que se editará de la tabla reparacion
+     * @param detalle El defecto por el que el auto entró al taller y que se editará de la tabla reparacion
+     * @return resultado si se actualizó la cuenta o no de la tabla reparacion
      */
     public static boolean editarArreglado(int id, String marca, String modelo, int anio, String color, String combustible, String detalle){
         boolean resultado = false;
@@ -345,7 +348,7 @@ public class Auto {
     }
     
     /**
-     * 
+     * Obtiene el total de lo generado por todos los autos reparados
      */
     public void obtenerTotal(){
         
@@ -358,6 +361,11 @@ public class Auto {
         Arreglado.lblTotal.setText(formatoMoneda.format(total));
     }
     
+    /**
+     * Obtiene los valores de la fila que se seleccione con el id que se pase en el parametro de la tabla reparacion
+     * @param id Se obtienen los valores de la fila a partir del id de  la tabla de reparacion
+     * @return Los valores de la fila del id seleccionado de la tabla reparacion
+     */
     public static Auto obtenerPorIdReparacion(int id){
         
         Auto auto = new Auto();
@@ -383,7 +391,11 @@ public class Auto {
         return auto;
     }
     
-    
+    /**
+     * Obtiene los valores de la fila que se seleccione con el id que se pase en el parametro de la tabla arreglado
+     * @param id Se obtienen los valores de la fila a partir del id de  la tabla de reparacion
+     * @return Los valores de la fila del id seleccionado de la tabla reparacion
+     */
     public static Auto obtenerPorIdArreglado(int id){
         
         Auto auto = new Auto();
@@ -428,6 +440,7 @@ public class Auto {
     }
     
     /**
+     * Obtiene el id
      * @return the id
      */
     public int getId() {
@@ -435,6 +448,7 @@ public class Auto {
     }
 
     /**
+     * Establece el id 
      * @param id the id to set
      */
     public void setId(int id) {
@@ -442,6 +456,7 @@ public class Auto {
     }
 
     /**
+     * Obtiene la marca
      * @return the marca
      */
     public String getMarca() {
@@ -449,6 +464,7 @@ public class Auto {
     }
 
     /**
+     * Establece la marca
      * @param marca the marca to set
      */
     public void setMarca(String marca) {
@@ -456,6 +472,7 @@ public class Auto {
     }
 
     /**
+     * Obtiene el modelo
      * @return the modelo
      */
     public String getModelo() {
@@ -463,6 +480,7 @@ public class Auto {
     }
 
     /**
+     * Establece el modelo
      * @param modelo the modelo to set
      */
     public void setModelo(String modelo) {
@@ -470,6 +488,7 @@ public class Auto {
     }
 
     /**
+     * Obtiene el año
      * @return the anio
      */
     public int getAnio() {
@@ -477,6 +496,7 @@ public class Auto {
     }
 
     /**
+     * Establece el año
      * @param anio the anio to set
      */
     public void setAnio(int anio) {
@@ -484,6 +504,7 @@ public class Auto {
     }
 
     /**
+     * Obtiene el color
      * @return the color
      */
     public String getColor() {
@@ -491,6 +512,7 @@ public class Auto {
     }
 
     /**
+     * Establece el color
      * @param color the color to set
      */
     public void setColor(String color) {
@@ -498,6 +520,7 @@ public class Auto {
     }
 
     /**
+     * Obtiene el combustible
      * @return the combustible
      */
     public String getCombustible() {
@@ -505,6 +528,7 @@ public class Auto {
     }
 
     /**
+     * Establece el combustible
      * @param combustible the combustible to set
      */
     public void setCombustible(String combustible) {
@@ -512,6 +536,7 @@ public class Auto {
     }
 
     /**
+     * Obtiene el detalle
      * @return the detalle
      */
     public String getDetalle() {
@@ -519,6 +544,7 @@ public class Auto {
     }
 
     /**
+     * Establece el detalle
      * @param detalle the detalle to set
      */
     public void setDetalle(String detalle) {

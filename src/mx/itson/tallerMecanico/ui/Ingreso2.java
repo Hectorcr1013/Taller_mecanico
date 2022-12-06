@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package mx.itson.tallerMecanico.ui;
 
 import java.awt.BorderLayout;
@@ -10,7 +6,7 @@ import javax.swing.JOptionPane;
 import mx.itson.tallerMecanico.entidades.Auto;
 
 /**
- *
+ * Este panel es en el que se ingresarán los datos que se mostraran en la tabla
  * @author Hector
  */
 public class Ingreso2 extends javax.swing.JPanel {
@@ -18,9 +14,9 @@ public class Ingreso2 extends javax.swing.JPanel {
     int id;
     
     /**
-     * 
-     * @param modal
-     * @param idArreglado 
+     * Comunica los valores que se le ingresen a los text fileds hacia la base de datos
+     * @param modal Decide si el verdadero o falso
+     * @param idArreglado El id de la fila que se seleccione de la tabla arreglado
      */
     public Ingreso2( boolean modal, int idArreglado) {
         initComponents();
@@ -39,7 +35,7 @@ public class Ingreso2 extends javax.swing.JPanel {
     
     
     /**
-     * 
+     * Inicia el panel Ingreso2
      */
     public Ingreso2(){
         initComponents();

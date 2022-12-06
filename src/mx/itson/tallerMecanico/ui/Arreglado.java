@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package mx.itson.tallerMecanico.ui;
 
 import java.awt.BorderLayout;
@@ -11,7 +7,7 @@ import javax.swing.table.DefaultTableModel;
 import mx.itson.tallerMecanico.entidades.Auto;
 
 /**
- *
+ * En este panel se mostrarán los autos que ya se arreglaron que pasaron de la tabla de reparacion
  * @author Hector
  */
 public class Arreglado extends javax.swing.JPanel {
@@ -24,7 +20,6 @@ public class Arreglado extends javax.swing.JPanel {
     public Arreglado() {
         initComponents();
         
-       
         logica.mostrarTablaArreglado();
         logica.obtenerTotal();
     }
@@ -245,7 +240,7 @@ public class Arreglado extends javax.swing.JPanel {
         logica.mostrarTablaArreglado();
         logica.obtenerTotal();
     }//GEN-LAST:event_pnlEliminarMouseClicked
-
+    
     private void pnlModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlModificarMouseClicked
         int fila = tblArreglados.getSelectedRow();
         int idAuto = Integer.parseInt(tblArreglados.getModel().getValueAt(fila, 0).toString());
@@ -261,7 +256,10 @@ public class Arreglado extends javax.swing.JPanel {
         
         cargarTable();
     }//GEN-LAST:event_pnlModificarMouseClicked
-
+    
+    /**
+     * Se cargan los datos de la tabla en una variable y se crea la una fila
+     */
     private void cargarTable(){
         List<Auto> autos = Auto.obtenerTodosArreglado();
         DefaultTableModel modelo1 =(DefaultTableModel)tblArreglados.getModel();

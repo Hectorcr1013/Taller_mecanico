@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package mx.itson.tallerMecanico.ui;
 
 import java.awt.BorderLayout;
@@ -11,7 +7,7 @@ import javax.swing.table.DefaultTableModel;
 import mx.itson.tallerMecanico.entidades.Auto;
 
 /**
- *
+ * En este panel se muestran los autos que se añadieron del panel ingreso
  * @author Hector
  */
 public class Reparacion extends javax.swing.JPanel {
@@ -335,7 +331,10 @@ public class Reparacion extends javax.swing.JPanel {
         cargarTable();
         
     }//GEN-LAST:event_pnlModificarMouseClicked
-
+    
+    /**
+     * Se cargan los datos de la tabla en una variable y se crea la una fila
+     */
     private void cargarTable(){
         List<Auto> autos = Auto.obtenerTodosReparacion();
         DefaultTableModel modelo =(DefaultTableModel)tblReparacion.getModel();

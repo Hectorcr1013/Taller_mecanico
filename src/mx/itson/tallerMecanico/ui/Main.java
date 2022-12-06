@@ -1,6 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+/**
+ * Paquete utilizado para utilizar cualquier tipo de java swing
  */
 package mx.itson.tallerMecanico.ui;
 
@@ -10,7 +9,7 @@ import java.time.LocalDate;
 import mx.itson.tallerMecanico.entidades.*;
 
 /**
- *
+ * Esta es el JFrame principal en el que se mostraran todos los paneles
  * @author Hector
  */
 public class Main extends javax.swing.JFrame {
