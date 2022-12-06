@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 /**
- *
+ * En esta clase se creará la conexion entre la base de datos y java
  * @author Hector
  */
 public class Conexion {
