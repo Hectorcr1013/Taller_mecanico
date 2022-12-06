@@ -306,39 +306,39 @@ public class Main extends javax.swing.JFrame {
 
     private void pnlIngresoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlIngresoMouseEntered
         if(pnlIngreso.getBackground().getRGB() == -15574355)
-            Logica.setColor(pnlIngreso);
+            Auto.setColor(pnlIngreso);
     }//GEN-LAST:event_pnlIngresoMouseEntered
 
     private void pnlReparacionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlReparacionMouseEntered
         if(pnlReparacion.getBackground().getRGB() == -15574355)
-            Logica.setColor(pnlReparacion);
+            Auto.setColor(pnlReparacion);
     }//GEN-LAST:event_pnlReparacionMouseEntered
 
     private void pnlArregladosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlArregladosMouseEntered
         if(pnlArreglados.getBackground().getRGB() == -15574355)
-            Logica.setColor(pnlArreglados);
+            Auto.setColor(pnlArreglados);
     }//GEN-LAST:event_pnlArregladosMouseEntered
 
     private void pnlIngresoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlIngresoMouseExited
         if(pnlReparacion.getBackground().getRGB() != -15574355 || pnlArreglados.getBackground().getRGB() != -15574355)
-            Logica.resetColor(pnlIngreso);
+            Auto.resetColor(pnlIngreso);
     }//GEN-LAST:event_pnlIngresoMouseExited
 
     private void pnlReparacionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlReparacionMouseExited
         if(pnlIngreso.getBackground().getRGB() != -15574355 || pnlArreglados.getBackground().getRGB() != -15574355)
-            Logica.resetColor(pnlReparacion);
+            Auto.resetColor(pnlReparacion);
     }//GEN-LAST:event_pnlReparacionMouseExited
 
     private void pnlArregladosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlArregladosMouseExited
         if(pnlIngreso.getBackground().getRGB() != -15574355 || pnlReparacion.getBackground().getRGB() != -15574355)
-            Logica.resetColor(pnlArreglados);
+            Auto.resetColor(pnlArreglados);
     }//GEN-LAST:event_pnlArregladosMouseExited
 
     private void pnlIngresoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlIngresoMouseClicked
         
-        Logica.setColor(pnlIngreso);
-        Logica.resetColor(pnlReparacion);
-        Logica.resetColor(pnlArreglados);
+        Auto.setColor(pnlIngreso);
+        Auto.resetColor(pnlReparacion);
+        Auto.resetColor(pnlArreglados);
         
         Ingreso p1 = new Ingreso();
         p1.setSize(1010, 450);
@@ -352,9 +352,9 @@ public class Main extends javax.swing.JFrame {
 
     private void pnlReparacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlReparacionMouseClicked
         
-        Logica.setColor(pnlReparacion);
-        Logica.resetColor(pnlIngreso);
-        Logica.resetColor(pnlArreglados);
+        Auto.setColor(pnlReparacion);
+        Auto.resetColor(pnlIngreso);
+        Auto.resetColor(pnlArreglados);
         
         Reparacion p2 = new Reparacion();
         p2.setSize(1010, 450);
@@ -367,9 +367,9 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_pnlReparacionMouseClicked
 
     private void pnlArregladosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlArregladosMouseClicked
-        Logica.setColor(pnlArreglados);
-        Logica.resetColor(pnlIngreso);
-        Logica.resetColor(pnlReparacion);
+        Auto.setColor(pnlArreglados);
+        Auto.resetColor(pnlIngreso);
+        Auto.resetColor(pnlReparacion);
         
         Arreglado p3 = new Arreglado();
         p3.setSize(1010, 450);

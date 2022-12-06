@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -25,7 +27,43 @@ import mx.itson.tallerMecanico.ui.Reparacion;
  * En esta clase se crearan los metodos que se utilizaran para el proceso de datos del proyecto
  * @author Hector
  */
-public class Logica {
+public class Auto {
+    
+    private int id;
+    private String marca;
+    private String modelo;
+    private int anio;
+    private String color;
+    private String combustible;
+    private String detalle;
+    
+    public static List<Auto> obtenerTodosReparacion() {
+        List<Auto> autos = new ArrayList<>();
+        try {
+            
+            Connection conexion = Conexion.obtener();
+            Statement statement = conexion.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT id, marca, modelo, anio, color, combustible, detalle FROM taller.Reparacion");
+            
+            while(resultSet.next()) {
+                Auto auto = new Auto();
+                auto.setId(resultSet.getInt(1));
+                auto.setMarca(resultSet.getString(2));
+                auto.setModelo(resultSet.getString(3));
+                auto.setAnio(resultSet.getInt(4));
+                auto.setColor(resultSet.getString(5));
+                auto.setCombustible(resultSet.getString(6));
+                auto.setDetalle(resultSet.getString(7));
+                
+                autos.add(auto);
+                
+            }
+        } catch (Exception e) {
+            System.out.println("Ocurrio un error: "+ e.getMessage());
+        }
+        return autos;
+    }
+    
     
     /**
      * Muestra en la tabla de reparacion la tabla de la base de datos conectada
@@ -149,15 +187,6 @@ public class Logica {
                 System.out.println("Auto eliminado de tabla reparacion");
             }
             
-            Arreglado p3 = new Arreglado();
-            p3.setSize(1010, 450);
-            p3.setLocation(0,0);
-        
-            pnlJFrames.removeAll();
-            pnlJFrames.add(p3, BorderLayout.CENTER);
-            pnlJFrames.revalidate();
-            pnlJFrames.repaint();
-            
         } catch (Exception e) {
             System.out.println("Ocurrio un error al intentar elminiar la fila: " + e);
             JOptionPane.showMessageDialog(null, "Selecciona un auto");
@@ -211,6 +240,48 @@ public class Logica {
         }
     }
     
+    /**
+     * 
+     * @param id
+     * @param marca
+     * @param modelo
+     * @param anio
+     * @param color
+     * @param combustible
+     * @param detalle
+     * @return 
+     */
+    public static boolean editarReparacion(int id, String marca, String modelo, int anio, String color, String combustible, String detalle){
+        boolean resultado = false;
+        
+        try {
+            Connection conexion = Conexion.obtener();
+            String consulta = "UPDATE taller.reparacion SET marca = ?, modelo = ?, anio = ?, color = ?, combustible = ?, detalle = ? WHERE id = ?";
+            PreparedStatement statement = conexion.prepareStatement(consulta);
+            
+            statement.setString(1, marca);
+            statement.setString(2, modelo);
+            statement.setInt(3, anio);
+            statement.setString(4, color);
+            statement.setString(5, combustible);
+            statement.setString(6, detalle);
+            statement.setInt(7, id);
+            
+            statement.execute();
+            
+            resultado = statement.getUpdateCount() == 1;
+            conexion.close();
+            
+        } catch (Exception e) {
+            System.out.println("Ocurrio un error: "+e);
+        }
+        
+        return resultado;
+    }
+    
+    /**
+     * 
+     */
     public void obtenerTotal(){
         
         int numeroFilas = tblArreglados.getRowCount();
@@ -220,6 +291,31 @@ public class Logica {
         NumberFormat formatoMoneda = NumberFormat.getCurrencyInstance(local);
         
         Arreglado.lblTotal.setText(formatoMoneda.format(total));
+    }
+    
+    public static Auto obtenerPorIdReparacion(int id){
+        
+        Auto auto = new Auto();
+        try {
+            Connection conexion = Conexion.obtener();
+            PreparedStatement statement = conexion.prepareStatement("SELECT id, marca, modelo, anio, color, combustible, detalle FROM taller.reparacion WHERE id = ?");
+            statement.setInt(1, id);
+            
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                auto.setId(resultSet.getInt(1));
+                auto.setMarca(resultSet.getString(2));
+                auto.setModelo(resultSet.getString(3));
+                auto.setAnio(resultSet.getInt(4));
+                auto.setColor(resultSet.getString(5));
+                auto.setCombustible(resultSet.getString(6));
+                auto.setDetalle(resultSet.getString(7));
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Ocurrio un error: "+e.getMessage());
+        }
+        return auto;
     }
     
     /**
@@ -238,6 +334,104 @@ public class Logica {
      */
     public static void resetColor(JPanel panel){
         panel.setBackground(new Color(18,90,173));
+    }
+    
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the marca
+     */
+    public String getMarca() {
+        return marca;
+    }
+
+    /**
+     * @param marca the marca to set
+     */
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    /**
+     * @return the modelo
+     */
+    public String getModelo() {
+        return modelo;
+    }
+
+    /**
+     * @param modelo the modelo to set
+     */
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    /**
+     * @return the anio
+     */
+    public int getAnio() {
+        return anio;
+    }
+
+    /**
+     * @param anio the anio to set
+     */
+    public void setAnio(int anio) {
+        this.anio = anio;
+    }
+
+    /**
+     * @return the color
+     */
+    public String getColor() {
+        return color;
+    }
+
+    /**
+     * @param color the color to set
+     */
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    /**
+     * @return the combustible
+     */
+    public String getCombustible() {
+        return combustible;
+    }
+
+    /**
+     * @param combustible the combustible to set
+     */
+    public void setCombustible(String combustible) {
+        this.combustible = combustible;
+    }
+
+    /**
+     * @return the detalle
+     */
+    public String getDetalle() {
+        return detalle;
+    }
+
+    /**
+     * @param detalle the detalle to set
+     */
+    public void setDetalle(String detalle) {
+        this.detalle = detalle;
     }
     
 }

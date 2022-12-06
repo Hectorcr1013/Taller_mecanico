@@ -7,7 +7,7 @@ package mx.itson.tallerMecanico.ui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JOptionPane;
-import mx.itson.tallerMecanico.entidades.Logica;
+import mx.itson.tallerMecanico.entidades.Auto;
 
 /**
  *
@@ -15,11 +15,35 @@ import mx.itson.tallerMecanico.entidades.Logica;
  */
 public class Ingreso extends javax.swing.JPanel {
 
+    int id;
+    
     /**
-     * Creates new form Ingreso
+     * 
+     * @param parent
+     * @param modal
+     * @param id 
      */
-    public Ingreso() {
+    public Ingreso( boolean modal, int id) {
         initComponents();
+        
+        this.id = id;
+        if(id != 0){
+            Auto auto = Auto.obtenerPorIdReparacion(id);
+            txfMarca.setText(auto.getMarca());
+            txfModelo.setText(auto.getModelo());
+            txfAnio.setText(Integer.toString(auto.getAnio()));
+            txfColor.setText(auto.getColor());
+            cbxCombustible.setSelectedItem(auto.getCombustible());
+            txfDetalle.setText(auto.getDetalle());
+        }
+    }
+    
+    /**
+     * 
+     */
+    public Ingreso(){
+        initComponents();
+        
     }
 
     /**
@@ -244,13 +268,20 @@ public class Ingreso extends javax.swing.JPanel {
                     det.equals("") || det.equals("Ingresa el detalle que tiene el auto")){
                 JOptionPane.showMessageDialog(null,"Faltan ingresar datos");
             } else {
+                boolean resultado = this.id == 0 ?
                 
-                Logica.guardar(mar, mod, Integer.parseInt(anio), col, com, det);
-                JOptionPane.showMessageDialog(null,"Auto enviado a reparación");
+                Auto.guardar(mar, mod, Integer.parseInt(anio), col, com, det):
+                Auto.editarReparacion(this.id, mar, mod, Integer.parseInt(anio), col, com, det);
                 
-                Logica.setColor(Main.pnlReparacion);
-                Logica.resetColor(Main.pnlIngreso);
-                Logica.resetColor(Main.pnlArreglados);
+                if (resultado){
+                    JOptionPane.showMessageDialog(this, "El auto se guardó correctamente", "Auto guardado", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Ocurrio un error al guardar", "error", JOptionPane.ERROR_MESSAGE);
+                }
+                
+                Auto.setColor(Main.pnlReparacion);
+                Auto.resetColor(Main.pnlIngreso);
+                Auto.resetColor(Main.pnlArreglados);
         
                 Reparacion p2 = new Reparacion();
                 p2.setSize(1010, 450);
@@ -394,7 +425,7 @@ public class Ingreso extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cbxCombustible;
+    public static javax.swing.JComboBox<String> cbxCombustible;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -413,10 +444,10 @@ public class Ingreso extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JPanel pnlIngreso;
-    private javax.swing.JTextField txfAnio;
-    private javax.swing.JTextField txfColor;
-    private javax.swing.JTextField txfDetalle;
-    private javax.swing.JTextField txfMarca;
-    private javax.swing.JTextField txfModelo;
+    public static javax.swing.JTextField txfAnio;
+    public static javax.swing.JTextField txfColor;
+    public static javax.swing.JTextField txfDetalle;
+    public static javax.swing.JTextField txfMarca;
+    public static javax.swing.JTextField txfModelo;
     // End of variables declaration//GEN-END:variables
 }

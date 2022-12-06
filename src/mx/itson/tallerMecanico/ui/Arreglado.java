@@ -6,7 +6,7 @@ package mx.itson.tallerMecanico.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import mx.itson.tallerMecanico.entidades.Logica;
+import mx.itson.tallerMecanico.entidades.Auto;
 
 /**
  *
@@ -14,7 +14,7 @@ import mx.itson.tallerMecanico.entidades.Logica;
  */
 public class Arreglado extends javax.swing.JPanel {
         
-    Logica logica = new Logica();
+    Auto logica = new Auto();
         
     /**
      * Creates new form Arreglado
@@ -195,9 +195,9 @@ public class Arreglado extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void pnlAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlAgregarMouseClicked
-        Logica.setColor(Main.pnlIngreso);
-        Logica.resetColor(Main.pnlReparacion);
-        Logica.resetColor(Main.pnlArreglados);
+        Auto.setColor(Main.pnlIngreso);
+        Auto.resetColor(Main.pnlReparacion);
+        Auto.resetColor(Main.pnlArreglados);
 
         Ingreso p1 = new Ingreso();
         p1.setSize(1010, 450);
@@ -234,7 +234,7 @@ public class Arreglado extends javax.swing.JPanel {
     }//GEN-LAST:event_pnlModificarMouseExited
 
     private void pnlEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlEliminarMouseClicked
-        Logica.eliminarAutoDeArreglado();
+        Auto.eliminarAutoDeArreglado();
         logica.mostrarTablaArreglado();
         logica.obtenerTotal();
     }//GEN-LAST:event_pnlEliminarMouseClicked

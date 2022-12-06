@@ -6,7 +6,9 @@ package mx.itson.tallerMecanico.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import mx.itson.tallerMecanico.entidades.Logica;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import mx.itson.tallerMecanico.entidades.Auto;
 
 /**
  *
@@ -20,8 +22,8 @@ public class Reparacion extends javax.swing.JPanel {
     public Reparacion() {
         initComponents();
         
-        Logica logica = new Logica();
-        logica.mostrarTablaReparacion();
+        Auto auto = new Auto();
+        auto.mostrarTablaReparacion();
         
     }
 
@@ -162,6 +164,9 @@ public class Reparacion extends javax.swing.JPanel {
 
         pnlModificar.setBackground(new java.awt.Color(18, 90, 173));
         pnlModificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlModificarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 pnlModificarMouseEntered(evt);
             }
@@ -267,9 +272,9 @@ public class Reparacion extends javax.swing.JPanel {
     }//GEN-LAST:event_pnlReparadoMouseExited
 
     private void pnlAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlAgregarMouseClicked
-        Logica.setColor(Main.pnlIngreso);
-        Logica.resetColor(Main.pnlReparacion);
-        Logica.resetColor(Main.pnlArreglados);
+        Auto.setColor(Main.pnlIngreso);
+        Auto.resetColor(Main.pnlReparacion);
+        Auto.resetColor(Main.pnlArreglados);
         
         Ingreso p1 = new Ingreso();
         p1.setSize(1010, 450);
@@ -283,24 +288,24 @@ public class Reparacion extends javax.swing.JPanel {
 
     private void pnlEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlEliminarMouseClicked
             
-            Logica.eliminarAutoDeReparacion();
+            Auto.eliminarAutoDeReparacion();
             
-            Logica.setColor(Main.pnlReparacion);
-            Logica.resetColor(Main.pnlIngreso);
-            Logica.resetColor(Main.pnlArreglados);
+            Auto.setColor(Main.pnlReparacion);
+            Auto.resetColor(Main.pnlIngreso);
+            Auto.resetColor(Main.pnlArreglados);
             
-            Logica logica = new Logica();
+            Auto logica = new Auto();
             logica.mostrarTablaReparacion();
     }//GEN-LAST:event_pnlEliminarMouseClicked
 
     private void pnlReparadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlReparadoMouseClicked
             
-            Logica.transferirAutoAArreglado();
-            Logica.eliminarAutoDeReparacion();
+            Auto.transferirAutoAArreglado();
+            Auto.eliminarAutoDeReparacion();
             
-            Logica.setColor(Main.pnlArreglados);
-            Logica.resetColor(Main.pnlIngreso);
-            Logica.resetColor(Main.pnlReparacion);
+            Auto.setColor(Main.pnlArreglados);
+            Auto.resetColor(Main.pnlIngreso);
+            Auto.resetColor(Main.pnlReparacion);
         
             Arreglado p3 = new Arreglado();
             p3.setSize(1010, 450);
@@ -313,6 +318,42 @@ public class Reparacion extends javax.swing.JPanel {
             
     }//GEN-LAST:event_pnlReparadoMouseClicked
 
+    private void pnlModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlModificarMouseClicked
+        
+        int fila = tblReparacion.getSelectedRow();
+        int idAuto = Integer.parseInt(tblReparacion.getModel().getValueAt(fila, 0).toString());
+        
+        Ingreso p1 = new Ingreso(true, idAuto);
+        p1.setSize(1010, 450);
+        p1.setLocation(0,0);
+        
+        Main.pnlJFrames.removeAll();
+        Main.pnlJFrames.add(p1, BorderLayout.CENTER);
+        Main.pnlJFrames.revalidate();
+        Main.pnlJFrames.repaint();
+        
+        cargarTable();
+        
+    }//GEN-LAST:event_pnlModificarMouseClicked
+
+    private void cargarTable(){
+        List<Auto> autos = Auto.obtenerTodosReparacion();
+        DefaultTableModel modelo =(DefaultTableModel)tblReparacion.getModel();
+        modelo.setRowCount(0);
+        
+        for(Auto a : autos){
+            modelo.addRow(new Object[] {
+                a.getId(),
+                a.getMarca(),
+                a.getModelo(),
+                a.getAnio(),
+                a.getColor(),
+                a.getCombustible(),
+                a.getDetalle()
+            });
+        }
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
